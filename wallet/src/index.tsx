@@ -5,6 +5,7 @@ import BurnerCore from '@burner-wallet/core';
 import { InjectedSigner, LocalSigner } from '@burner-wallet/core/signers';
 import { InfuraGateway, InjectedGateway, XDaiGateway, } from '@burner-wallet/core/gateways';
 import Exchange, { Uniswap, XDaiBridge } from '@burner-wallet/exchange';
+import BiconomyGateway from './BiconomyGateway';
 import ModernUI from '@burner-wallet/modern-ui';
 
 const core = new BurnerCore({
@@ -13,6 +14,7 @@ const core = new BurnerCore({
     new InjectedGateway(),
     new InfuraGateway(process.env.REACT_APP_INFURA_KEY),
     new XDaiGateway(),
+    new BiconomyGateway("web3_url", "biconomy_api_key"),
   ],
   // TODO use Sai
   assets: [xdai, dai, eth],

@@ -4,7 +4,7 @@ var Gateway = require('@burner-wallet/core/gateways/Gateway');
 var Biconomy = biconomy_module.Biconomy;
 
 class BiconomyGateway extends Gateway {
-  constructor() {
+  constructor(web3_url, api_key) {
     super();
     this._w3Provider = null;
     var web3 = "ws://your-web3-url";
