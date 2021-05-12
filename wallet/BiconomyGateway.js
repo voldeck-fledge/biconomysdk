@@ -1,7 +1,5 @@
-const Gateway = require('./Gateway');
 const Web3 = require('web3');
 var biconomy_module = require("@biconomy/mexa");
-const Web3 = require('web3');
 var Gateway = require('@burner-wallet/core/gateways/Gateway');
 var Biconomy = biconomy_module.Biconomy;
 
@@ -19,7 +17,7 @@ class BiconomyGateway extends Gateway {
      * 
      * 
      * 
-biconomy.onEvent(biconomy.READY, () => {
+this.biconomy.onEvent(biconomy.READY, () => {
   // Initialize your dapp here like getting user accounts etc
 }).onEvent(biconomy.ERROR, (error, message) => {
   // Handle error while initializing mexa
@@ -59,7 +57,7 @@ biconomy.onEvent(biconomy.READY, () => {
       //Call your target method (must be registered on the dashboard).. here we are calling setQuote() method of our contract
       let tx = contract.methods.setQuote(newQuote).send({
             from: userAddress,
-            signatureType: biconomy.EIP712_SIGN,
+            signatureType: this.biconomy.EIP712_SIGN,
             //optionally you can add other options like gasLimit
        });
 
